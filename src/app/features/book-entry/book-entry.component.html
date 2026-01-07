@@ -1,0 +1,171 @@
+<div class="book-entry-container">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <span class="breadcrumb-item">Search</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-item">Company</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-item">Bulk ID</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-item active">Add New Book Entry</span>
+  </div>
+
+  <!-- Page Title and Tabs -->
+  <div class="page-header">
+    <button class="back-button">&lt;</button>
+    <h1 class="page-title">Add New Book Entry</h1>
+    <span class="separator">|</span>
+    <div class="tabs">
+      <span class="tab">Sec ID 1,</span>
+      <span class="tab">Sec ID 2,</span>
+      <span class="tab">Sec ID 3,</span>
+      <span class="tab">Sec ID 4,</span>
+      <span class="tab add-tab">+ 5</span>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="bookEntryForm" class="book-entry-form">
+    
+    <!-- Row 1: Reason and Internal Comment -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="reason">Reason</label>
+        <select id="reason" formControlName="reason" class="form-control">
+          <option value="">Select</option>
+          <option value="option1">Option 1</option>
+          <option value="option2">Option 2</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="internalComment">Internal Comment</label>
+        <input 
+          type="text" 
+          id="internalComment" 
+          formControlName="internalComment" 
+          class="form-control"
+          placeholder="Text Input">
+      </div>
+    </div>
+
+    <!-- Row 2: Date Fields -->
+    <div class="form-row date-row">
+      <div class="form-group">
+        <label for="closeForIssuance">Close for Issuance</label>
+        <input 
+          type="date" 
+          id="closeForIssuance" 
+          formControlName="closeForIssuance" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="openForIssuance">Open for Issuance</label>
+        <input 
+          type="date" 
+          id="openForIssuance" 
+          formControlName="openForIssuance" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="closeForCancellation">Close for CANCELLATION</label>
+        <input 
+          type="date" 
+          id="closeForCancellation" 
+          formControlName="closeForCancellation" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="closeForCancellationError">Close for CANCELLATION-ERROR</label>
+        <input 
+          type="date" 
+          id="closeForCancellationError" 
+          formControlName="closeForCancellationError" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+    </div>
+
+    <!-- Row 3: Checkboxes -->
+    <div class="form-row checkbox-row">
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="immediately" 
+          formControlName="immediately" 
+          class="form-checkbox">
+        <label for="immediately" class="checkbox-label">Immediately</label>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="permanent" 
+          formControlName="permanent" 
+          class="form-checkbox">
+        <label for="permanent" class="checkbox-label">Permanent</label>
+      </div>
+
+      <div class="form-group checkbox-group empty-space"></div>
+      <div class="form-group checkbox-group empty-space"></div>
+    </div>
+
+    <!-- Row 4: DR Web Notice -->
+    <div class="form-row">
+      <div class="form-group full-width">
+        <label for="drWebNotice">DR Web Notice</label>
+        <textarea 
+          id="drWebNotice" 
+          formControlName="drWebNotice" 
+          class="form-control textarea-control"
+          rows="8"
+          placeholder="Text Input"></textarea>
+      </div>
+    </div>
+
+    <!-- Row 5: Bottom Checkboxes and Links -->
+    <div class="form-row checkbox-row bottom-options">
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="drWebNoticePublish" 
+          formControlName="drWebNoticePublish" 
+          class="form-checkbox">
+        <label for="drWebNoticePublish" class="checkbox-label">DR Web Notice Publish</label>
+        <a href="#" class="link-action">Override PDF</a>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="brokerFlashRequired" 
+          formControlName="brokerFlashRequired" 
+          class="form-checkbox">
+        <label for="brokerFlashRequired" class="checkbox-label">Broker Flash Required</label>
+      </div>
+
+      <div class="form-group checkbox-group">
+        <input 
+          type="checkbox" 
+          id="sendSwift" 
+          formControlName="sendSwift" 
+          class="form-checkbox">
+        <label for="sendSwift" class="checkbox-label">Send SWIFT</label>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel and Back</button>
+      <button type="submit" class="btn btn-submit" (click)="onSubmit()">Submit to Checker</button>
+    </div>
+
+  </form>
+</div>
+

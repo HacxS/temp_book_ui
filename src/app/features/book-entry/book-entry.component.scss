@@ -1,0 +1,359 @@
+.book-entry-container {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+
+  // Breadcrumb
+  .breadcrumb {
+    font-size: 14px;
+    color: #0066cc;
+    margin-bottom: 20px;
+
+    .breadcrumb-item {
+      color: #0066cc;
+      cursor: pointer;
+
+      &.active {
+        color: #333;
+      }
+
+      &:hover:not(.active) {
+        text-decoration: underline;
+      }
+    }
+
+    .breadcrumb-separator {
+      margin: 0 8px;
+      color: #666;
+    }
+  }
+
+  // Page Header
+  .page-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+
+    .back-button {
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #333;
+      cursor: pointer;
+      padding: 0 10px;
+
+      &:hover {
+        color: #0066cc;
+      }
+    }
+
+    .page-title {
+      font-size: 28px;
+      font-weight: 500;
+      color: #333;
+      margin: 0;
+    }
+
+    .separator {
+      font-size: 28px;
+      color: #ccc;
+      margin: 0 10px;
+      font-weight: 300;
+    }
+
+    .tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+
+      .tab {
+        font-size: 18px;
+        color: #333;
+        font-weight: 400;
+
+        &.add-tab {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 32px;
+          height: 32px;
+          background-color: #e8e8e8;
+          color: #666;
+          font-size: 16px;
+          border-radius: 50%;
+          margin-left: 2px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+
+  // Form
+  .book-entry-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+    .form-row {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 20px;
+
+      // Default 2 columns for most rows
+      &:not(.checkbox-row):not(.date-row) {
+        grid-template-columns: repeat(2, 1fr);
+
+        &:has(.full-width) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      // Date row - 4 columns
+      &.date-row {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      // Checkbox row - matches 4 column grid
+      &.checkbox-row {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        align-items: flex-start;
+
+        .checkbox-group {
+          &.empty-space {
+            visibility: hidden;
+          }
+        }
+
+        &.bottom-options {
+          display: flex;
+          gap: 30px;
+          margin-top: 10px;
+          grid-template-columns: unset;
+
+          .checkbox-group.empty-space {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      &.full-width {
+        grid-column: 1 / -1;
+      }
+
+      &.checkbox-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+      }
+
+      label {
+        font-size: 13px;
+        color: #333;
+        margin-bottom: 6px;
+        font-weight: 500;
+
+        &.checkbox-label {
+          margin-bottom: 0;
+          font-weight: 400;
+          cursor: pointer;
+        }
+      }
+
+      .form-control {
+        padding: 10px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        background-color: #fff;
+        transition: border-color 0.2s;
+
+        &:focus {
+          outline: none;
+          border-color: #0066cc;
+          box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+        }
+
+        &::placeholder {
+          color: #999;
+        }
+
+        &.date-input {
+          &::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+          }
+        }
+      }
+
+      select.form-control {
+        cursor: pointer;
+        appearance: none;
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 20px;
+        padding-right: 35px;
+      }
+
+      .textarea-control {
+        min-height: 150px;
+        resize: vertical;
+        font-family: inherit;
+      }
+
+      .form-checkbox {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        margin: 0;
+        accent-color: #0066cc;
+      }
+
+      .link-action {
+        color: #0066cc;
+        font-size: 13px;
+        text-decoration: none;
+        margin-left: 15px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    // Action Buttons
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 15px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+
+      .btn {
+        padding: 10px 24px;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        border: none;
+
+        &.btn-cancel {
+          background-color: #f0f0f0;
+          color: #333;
+
+          &:hover {
+            background-color: #e0e0e0;
+          }
+        }
+
+        &.btn-submit {
+          background-color: #0066cc;
+          color: #fff;
+
+          &:hover {
+            background-color: #0052a3;
+          }
+
+          &:active {
+            background-color: #004080;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 1400px) {
+  .book-entry-container {
+    .book-entry-form {
+      .form-row {
+        // Date row becomes 2x2 grid on medium screens
+        &.date-row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        // Checkbox row becomes 2 columns to match
+        &.checkbox-row:not(.bottom-options) {
+          grid-template-columns: repeat(2, 1fr);
+
+          .checkbox-group.empty-space {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .book-entry-container {
+    .book-entry-form {
+      .form-row {
+        &:not(.checkbox-row):not(.date-row) {
+          grid-template-columns: 1fr;
+        }
+
+        // Date row becomes single column
+        &.date-row {
+          grid-template-columns: 1fr;
+        }
+
+        // Checkbox row becomes single column
+        &.checkbox-row:not(.bottom-options) {
+          grid-template-columns: 1fr;
+        }
+      }
+    }
+
+    .page-header {
+      flex-wrap: wrap;
+
+      .separator {
+        display: none;
+      }
+
+      .tabs {
+        width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .book-entry-container {
+    padding: 15px;
+
+    .book-entry-form {
+      padding: 20px;
+
+      .form-row {
+        &.checkbox-row.bottom-options {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 15px;
+        }
+      }
+
+      .form-actions {
+        flex-direction: column;
+
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
