@@ -149,7 +149,15 @@
         grid-column: 1 / -1;
       }
 
-      &.checkbox-group {
+      &.checkbox-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+        padding-top: 28px;
+      }
+
+      .checkbox-group {
+        display: flex;
         flex-direction: row;
         align-items: center;
         gap: 8px;
