@@ -38,12 +38,6 @@ export class BookEntryStateService {
   private formDataSubject = new BehaviorSubject<BookEntryFormData>(this.initialFormData);
   public formData$: Observable<BookEntryFormData> = this.formDataSubject.asObservable();
 
-  // Flag to track if we should reopen popup after navigation
-  private shouldReopenPopupSubject = new BehaviorSubject<boolean>(false);
-  public shouldReopenPopup$: Observable<boolean> = this.shouldReopenPopupSubject.asObservable();
-
-  constructor() {}
-
   getFormData(): BookEntryFormData {
     return this.formDataSubject.value;
   }
@@ -59,23 +53,5 @@ export class BookEntryStateService {
 
   resetFormData(): void {
     this.formDataSubject.next(this.initialFormData);
-  }
-
-  // Methods to manage popup state
-  setShouldReopenPopup(value: boolean): void {
-    console.log('[StateService] Setting shouldReopenPopup to:', value);
-    this.shouldReopenPopupSubject.next(value);
-    console.log('[StateService] Current value after set:', this.shouldReopenPopupSubject.value);
-  }
-
-  getShouldReopenPopup(): boolean {
-    const value = this.shouldReopenPopupSubject.value;
-    console.log('[StateService] Getting shouldReopenPopup:', value);
-    return value;
-  }
-
-  clearReopenPopupFlag(): void {
-    console.log('[StateService] Clearing shouldReopenPopup flag');
-    this.shouldReopenPopupSubject.next(false);
   }
 }

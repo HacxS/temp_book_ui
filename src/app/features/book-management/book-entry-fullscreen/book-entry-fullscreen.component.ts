@@ -64,7 +64,6 @@ export class BookEntryFullscreenComponent implements OnInit, OnDestroy {
   }
 
   onCancel(): void {
-    console.log('Cancel in full screen mode - going back to popup');
     this.closeFullScreen.emit();
   }
 

@@ -12,7 +12,7 @@ import { BookEntryStateService } from '../../book-entry/services/book-entry-stat
   styleUrl: './book-entry-popup.component.scss'
 })
 export class BookEntryPopupComponent implements OnInit, OnDestroy {
-  @Output() closePopup = new EventEmitter<boolean>();
+  @Output() closePopup = new EventEmitter<void>();
   @Output() openFullScreen = new EventEmitter<void>();
 
   bookEntryForm!: FormGroup;
@@ -68,20 +68,18 @@ export class BookEntryPopupComponent implements OnInit, OnDestroy {
   }
 
   onCancel(): void {
-    console.log('Cancel in popup mode - user manually closing');
-    this.closePopup.emit(true);
+    this.closePopup.emit();
   }
 
   onSubmit(): void {
     if (this.bookEntryForm.valid) {
       console.log('Form submitted:', this.bookEntryForm.value);
       alert('Form submitted successfully!');
-      this.closePopup.emit(true);
+      this.closePopup.emit();
     }
   }
 
   onOpenFullScreen(): void {
-    console.log('Switching to full screen view');
     this.stateService.updateFormData(this.bookEntryForm.value);
     this.openFullScreen.emit();
   }

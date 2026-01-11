@@ -15,11 +15,11 @@
   <div class="popup-container">
     <div class="popup-header">
       <h2>New Book Entry</h2>
-      <button class="close-button" (click)="closePopup(true)">&times;</button>
+      <button class="close-button" (click)="closePopup()">&times;</button>
     </div>
     <div class="popup-content">
       <app-book-entry-popup
-        (closePopup)="closePopup($event)"
+        (closePopup)="closePopup()"
         (openFullScreen)="openFullScreen()">
       </app-book-entry-popup>
     </div>
