@@ -12,7 +12,7 @@
 
   <!-- Page Title and Tabs -->
   <div class="page-header">
-    <button class="back-button">&lt;</button>
+    <button class="back-button" (click)="onCancel()">&lt;</button>
     <h1 class="page-title">Add New Book Entry</h1>
     <span class="separator">|</span>
     <div class="tabs">
@@ -33,8 +33,9 @@
         <label for="reason">Reason</label>
         <select id="reason" formControlName="reason" class="form-control">
           <option value="">Select</option>
-          <option value="option1">Option 1</option>
-          <option value="option2">Option 2</option>
+          <option value="corporate-action">Corporate Action</option>
+          <option value="dividend">Dividend Date Reconciliation</option>
+          <option value="other">Other</option>
         </select>
       </div>
 
@@ -161,10 +162,11 @@
 
     <!-- Action Buttons -->
     <div class="form-actions">
-      <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel and Back</button>
-      <button type="submit" class="btn btn-submit" (click)="onSubmit()">Submit to Checker</button>
+      <div class="right-actions">
+        <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel and Back</button>
+        <button type="submit" class="btn btn-submit" (click)="onSubmit()">Submit to Checker</button>
+      </div>
     </div>
 
   </form>
 </div>
-

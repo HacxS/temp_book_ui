@@ -1,0 +1,161 @@
+<div class="popup-book-entry">
+  <!-- Header Section -->
+  <div class="entry-header">
+    <div class="header-field">
+      <label>Sec ID:</label>
+      <span class="value">{{ bookEntryForm.get('secId')?.value }}</span>
+    </div>
+    <div class="header-field">
+      <label>Current Status:</label>
+      <span class="value">{{ bookEntryForm.get('currentStatus')?.value || '-' }}</span>
+    </div>
+    <div class="header-field">
+      <label>Current Date:</label>
+      <span class="value">{{ bookEntryForm.get('currentDate')?.value }}</span>
+    </div>
+  </div>
+
+  <!-- Form -->
+  <form [formGroup]="bookEntryForm" class="popup-form">
+    
+    <!-- Reason Dropdown -->
+    <div class="form-group">
+      <label for="reason">Reason</label>
+      <select id="reason" formControlName="reason" class="form-control">
+        <option value="">Select</option>
+        <option value="corporate-action">Corporate Action</option>
+        <option value="dividend">Dividend Date Reconciliation</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <!-- Date Fields Row -->
+    <div class="date-grid">
+      <div class="form-group">
+        <label for="closeForIssuance">Close of Issuance</label>
+        <input 
+          type="date" 
+          id="closeForIssuance" 
+          formControlName="closeForIssuance" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="openForIssuance">Open of Issuance</label>
+        <input 
+          type="date" 
+          id="openForIssuance" 
+          formControlName="openForIssuance" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="closeForCancellation">Open of Cancellation</label>
+        <input 
+          type="date" 
+          id="closeForCancellation" 
+          formControlName="closeForCancellation" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+
+      <div class="form-group">
+        <label for="openForCancellation">Open of Cancellation</label>
+        <input 
+          type="date" 
+          id="openForCancellation" 
+          formControlName="openForCancellation" 
+          class="form-control date-input"
+          placeholder="mm/dd/yyyy">
+      </div>
+    </div>
+
+    <!-- Checkboxes Row -->
+    <div class="checkbox-row">
+      <div class="checkbox-group">
+        <input 
+          type="checkbox" 
+          id="immediately" 
+          formControlName="immediately" 
+          class="form-checkbox">
+        <label for="immediately">Immediateily</label>
+      </div>
+
+      <div class="checkbox-group">
+        <input 
+          type="checkbox" 
+          id="permanent" 
+          formControlName="permanent" 
+          class="form-checkbox">
+        <label for="permanent">Permanent</label>
+      </div>
+    </div>
+
+    <!-- Internal Comment -->
+    <div class="form-group">
+      <label for="internalComment">Internal Comments:</label>
+      <textarea 
+        id="internalComment" 
+        formControlName="internalComment" 
+        class="form-control textarea-small"
+        rows="2"
+        placeholder="Text Input"></textarea>
+    </div>
+
+    <!-- DR Web Notice Content -->
+    <div class="form-group">
+      <label for="drWebNoticeContent">DR Web Notice Content</label>
+      <textarea 
+        id="drWebNoticeContent" 
+        formControlName="drWebNoticeContent" 
+        class="form-control textarea-large"
+        rows="4"
+        placeholder=""></textarea>
+    </div>
+
+    <!-- Bottom Options -->
+    <div class="bottom-options">
+      <div class="checkbox-group">
+        <input 
+          type="checkbox" 
+          id="drWebNoticePublish" 
+          formControlName="drWebNoticePublish" 
+          class="form-checkbox">
+        <label for="drWebNoticePublish">DR Web Notice Publish</label>
+        <a href="#" class="link-action" (click)="$event.preventDefault()">Override PDF</a>
+      </div>
+
+      <div class="checkbox-group">
+        <input 
+          type="checkbox" 
+          id="brokerFlashRequired" 
+          formControlName="brokerFlashRequired" 
+          class="form-checkbox">
+        <label for="brokerFlashRequired">Broker Flash Required</label>
+      </div>
+
+      <div class="checkbox-group">
+        <input 
+          type="checkbox" 
+          id="sendSwift" 
+          formControlName="sendSwift" 
+          class="form-checkbox">
+        <label for="sendSwift">Send SWIFT</label>
+      </div>
+    </div>
+
+    <!-- View in Full Screen Link -->
+    <div class="fullscreen-link">
+      <a href="#" (click)="$event.preventDefault(); onOpenFullScreen()">View in Full Screen</a>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="form-actions">
+      <button type="button" class="btn btn-cancel" (click)="onCancel()">Cancel</button>
+      <button type="submit" class="btn btn-submit" (click)="onSubmit()">Submit for Approval</button>
+    </div>
+
+  </form>
+</div>

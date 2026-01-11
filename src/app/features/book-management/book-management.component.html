@@ -1,0 +1,34 @@
+<div class="book-management-container" *ngIf="!isFullScreenMode">
+  <div class="header">
+    <h1>Books Management</h1>
+  </div>
+
+  <div class="content">
+    <button class="btn btn-primary" (click)="openBookEntryPopup()">
+      Open Book Entry Popup
+    </button>
+  </div>
+</div>
+
+<!-- Popup Overlay -->
+<div class="popup-overlay" *ngIf="isPopupOpen && !isFullScreenMode" (click)="onPopupBackdropClick($event)">
+  <div class="popup-container">
+    <div class="popup-header">
+      <h2>New Book Entry</h2>
+      <button class="close-button" (click)="closePopup(true)">&times;</button>
+    </div>
+    <div class="popup-content">
+      <app-book-entry-popup
+        (closePopup)="closePopup($event)"
+        (openFullScreen)="openFullScreen()">
+      </app-book-entry-popup>
+    </div>
+  </div>
+</div>
+
+<!-- Full Screen Mode -->
+<div class="fullscreen-container" *ngIf="isFullScreenMode">
+  <app-book-entry-fullscreen
+    (closeFullScreen)="closeFullScreen()">
+  </app-book-entry-fullscreen>
+</div>

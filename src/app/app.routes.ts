@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'book-entry',
+    redirectTo: 'book-management',
     pathMatch: 'full'
   },
   {
-    path: 'book-entry',
-    loadComponent: () => import('./features/book-entry/book-entry.component').then(m => m.BookEntryComponent)
+    path: 'book-management',
+    loadComponent: () => import('./features/book-management/book-management.component').then(m => m.BookManagementComponent)
   }
 ];
