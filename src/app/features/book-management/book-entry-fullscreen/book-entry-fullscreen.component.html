@@ -112,7 +112,10 @@
           id="internalComment" 
           formControlName="internalComment" 
           class="form-control"
-          placeholder="Text Input">
+          placeholder="Text Input"
+          (keypress)="onKeyPress($event)"
+          (input)="onInput($event)"
+          (paste)="onPaste($event)">
       </div>
     </div>
 
@@ -125,7 +128,10 @@
           formControlName="drWebNotice" 
           class="form-control textarea-control"
           rows="8"
-          placeholder="Text Input"></textarea>
+          placeholder="Text Input"
+          (keypress)="onKeyPress($event)"
+          (input)="onInput($event)"
+          (paste)="onPaste($event)"></textarea>
       </div>
     </div>
 

@@ -101,7 +101,10 @@
         formControlName="internalComment" 
         class="form-control textarea-small"
         rows="2"
-        placeholder="Text Input"></textarea>
+        placeholder="Text Input"
+        (keypress)="onKeyPress($event)"
+        (input)="onInput($event)"
+        (paste)="onPaste($event)"></textarea>
     </div>
 
     <!-- DR Web Notice Content -->
@@ -112,7 +115,10 @@
         formControlName="drWebNoticeContent" 
         class="form-control textarea-large"
         rows="4"
-        placeholder=""></textarea>
+        placeholder=""
+        (keypress)="onKeyPress($event)"
+        (input)="onInput($event)"
+        (paste)="onPaste($event)"></textarea>
     </div>
 
     <!-- Bottom Options -->
