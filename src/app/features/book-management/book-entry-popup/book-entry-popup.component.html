@@ -101,10 +101,7 @@
         formControlName="internalComment" 
         class="form-control textarea-small"
         rows="2"
-        placeholder="Text Input"
-        (keypress)="onKeyPress($event)"
-        (input)="onInput($event)"
-        (paste)="onPaste($event)"></textarea>
+        placeholder="Text Input"></textarea>
     </div>
 
     <!-- DR Web Notice Content -->
@@ -115,10 +112,7 @@
         formControlName="drWebNoticeContent" 
         class="form-control textarea-large"
         rows="4"
-        placeholder=""
-        (keypress)="onKeyPress($event)"
-        (input)="onInput($event)"
-        (paste)="onPaste($event)"></textarea>
+        placeholder=""></textarea>
     </div>
 
     <!-- Bottom Options -->
@@ -130,7 +124,7 @@
           formControlName="drWebNoticePublish" 
           class="form-checkbox">
         <label for="drWebNoticePublish">DR Web Notice Publish</label>
-        <a href="#" class="link-action" (click)="$event.preventDefault()">Override PDF</a>
+        <a href="#" class="link-action" (click)="$event.preventDefault(); onOverridePdfClick()">Override PDF</a>
       </div>
 
       <div class="checkbox-group">
@@ -164,4 +158,12 @@
     </div>
 
   </form>
+
+  <!-- Override PDF modal overlay -->
+  <div class="override-pdf-overlay" *ngIf="showOverridePdfModal" (click)="onCloseOverridePdfModal()">
+    <app-override-pdf-modal
+      (close)="onCloseOverridePdfModal()"
+      (upload)="onOverridePdfUpload($event)">
+    </app-override-pdf-modal>
+  </div>
 </div>

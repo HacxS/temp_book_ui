@@ -1,0 +1,40 @@
+<div class="override-pdf-modal" (click)="$event.stopPropagation()">
+  <div class="modal-header">
+    <h2 class="modal-title">Override PDF</h2>
+    <button type="button" class="close-btn" (click)="onClose()" [disabled]="isUploading" aria-label="Close">&times;</button>
+  </div>
+  <div class="modal-body">
+    <input
+      #fileInput
+      type="file"
+      accept=".pdf,application/pdf"
+      class="file-input"
+      (change)="onFileInputChange($event)">
+    <div
+      class="drop-zone"
+      [class.dragging]="isDragging"
+      (click)="onBrowseClick($event)"
+      (drop)="onDrop($event)"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()">
+      <span class="browse-text" *ngIf="!selectedFile">+ Browse File from Device</span>
+      <div class="uploaded-file-details" *ngIf="selectedFile">
+        <span class="uploaded-label" *ngIf="isPreviouslySaved">Uploaded file</span>
+        <span class="file-name">{{ selectedFile.name }}</span>
+        <span class="file-size">{{ formatFileSize(selectedFile.size) }}</span>
+        <span class="browse-hint">Click to choose a different file</span>
+      </div>
+    </div>
+    <div class="pdf-viewer-wrap" *ngIf="pdfViewerUrl">
+      <p class="pdf-viewer-label">PDF content</p>
+      <iframe [src]="pdfViewerUrl" class="pdf-viewer" title="Override PDF content"></iframe>
+    </div>
+    <p class="error-message" *ngIf="errorMessage">{{ errorMessage }}</p>
+  </div>
+  <div class="modal-actions">
+    <button type="button" class="btn btn-discard" (click)="onDiscard()" [disabled]="isUploading">Discard</button>
+    <button type="button" class="btn btn-upload" [disabled]="isUploading" (click)="onUpload()">
+      {{ isUploading ? 'Uploading...' : (selectedFile ? 'Upload' : 'Browse & Upload') }}
+    </button>
+  </div>
+</div>
